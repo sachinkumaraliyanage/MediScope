@@ -1,6 +1,10 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
+import 'LoginPage.dart';
 
+//sachin kumara Liyanage
+//IT17152938
 class SplashScreen extends StatefulWidget{
   @override
   State<StatefulWidget> createState()=> new _SplashScreenState();
@@ -8,13 +12,23 @@ class SplashScreen extends StatefulWidget{
 
 class _SplashScreenState extends State<SplashScreen>{
   @override
+  void initState() {
+    super.initState();
+    Timer(Duration(seconds: 3), ()=>{
+      Navigator.pushReplacement(
+      context,
+      MaterialPageRoute(builder: (context) => new LoginPage()),
+      ),
+    });
+  }
+  @override
   Widget build(BuildContext context) {
     return new Scaffold(
       backgroundColor: Colors.black,
       body: new Stack(
         fit:StackFit.expand,
         children: <Widget>[
-          new FullBackground('assets/backimg/spback3.jpg', 3.0, 3.0, 0.2),
+          new FullBackground('assets/backimg/spback3.jpg', 6.0, 6.0, 0.2),
           new Expanded(
             flex: 2,
             child:new Column(

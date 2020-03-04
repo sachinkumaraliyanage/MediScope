@@ -54,9 +54,12 @@ flutter:
   assets:
      - assets/icons/icon.jpg
      - assets/icons/icon.png
+     - assets/icons/fb.png
+     - assets/icons/go.png
      - assets/backimg/spback.jpg
      - assets/backimg/spback2.jpg
      - assets/backimg/spback3.jpg
+     - assets/backimg/backlogin.jpg
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
 

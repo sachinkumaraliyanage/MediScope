@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "254878059811",
+    "firebase_url": "https://mediscope-cfcfc.firebaseio.com",
+    "project_id": "mediscope-cfcfc",
+    "storage_bucket": "mediscope-cfcfc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:254878059811:android:dd59ae37e2952c41861096",
+        "android_client_info": {
+          "package_name": "com.triloka.mediscope.MediScope"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "254878059811-q9kgrs0juo2fsthtu5qn6s5dnhsv7ujv.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.triloka.mediscope.MediScope",
+            "certificate_hash": "d39d0733aec67f77d19a16dc22fa630502608683"
+          }
+        },
+        {
+          "client_id": "254878059811-akh1i2pnn3r33rkn3hi0olfafd0j36q5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDg_l3vYMpJ3ZU8-1ICkGE-BT0OoFuYCSQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "254878059811-akh1i2pnn3r33rkn3hi0olfafd0j36q5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
