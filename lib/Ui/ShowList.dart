@@ -6,7 +6,9 @@ import 'FullBackground.dart';
 import '../Utill/FirebaseAuthPr.dart';
 import '../main.dart';
 import 'AddMedicine.dart';
+import 'ViewMedicine.dart';
 import 'EditMedicine.dart';
+
 
 //sachin kumara Liyanage
 //IT17152938
@@ -234,7 +236,10 @@ class _MedicineContainerCreator {
                               splashColor: Colors.white,
                               iconSize: 40,
                               onPressed: () {
-
+                                Navigator.push(
+                                  aa.context,
+                                  MaterialPageRoute(builder: (context) => new ViewMedicine(m)),
+                                );
                               },
                             ),
                           ),

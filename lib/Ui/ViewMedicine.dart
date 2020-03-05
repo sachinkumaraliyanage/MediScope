@@ -8,17 +8,27 @@ import '../Utill/CRUDModel.dart';
 import '../Utill/Medicine.dart';
 import 'ShowList.dart';
 
-class AddMedicine extends StatefulWidget {
+class ViewMedicine extends StatefulWidget {
+  Medicine m;
+
+  ViewMedicine(this.m);
+
   @override
-  State<StatefulWidget> createState() => _AddMedicineState();
+  State<StatefulWidget> createState() => _ViewMedicineState(m);
 }
 
-class _AddMedicineState extends State<AddMedicine> {
+class _ViewMedicineState extends State<ViewMedicine> {
+  Medicine m;
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
 
+
+  _ViewMedicineState(this.m);
+
   @override
   Widget build(BuildContext context) {
+    name.text=m.name;
+    dis.text=m.details;
     TextStyle textStyle = Theme.of(context).textTheme.headline5;
     return Scaffold(
       body: Center(
@@ -48,70 +58,62 @@ class _AddMedicineState extends State<AddMedicine> {
                                   new Align(
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
-                                      'Medicine Name',
-                                      style: TextStyle(fontSize: 20),
+                                      'Medicine Name : ',
+                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
-                                  new TextField(
-                                    controller: name,
-                                    keyboardType: TextInputType.text,
-                                    maxLines: 1,
-                                    decoration: InputDecoration(
-                                        hintText: "Medicine Name",
-                                        labelStyle: textStyle,
-                                        contentPadding: EdgeInsets.fromLTRB(
-                                            20.0, 15.0, 20.0, 15.0),
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.blueAccent,
-                                                width: 32.0),
-                                            borderRadius:
-                                                BorderRadius.circular(20.0)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white,
-                                                width: 32.0),
-                                            borderRadius:
-                                                BorderRadius.circular(20.0))),
+                                  new Container(
+                                      child: new Align(
+                                        alignment: Alignment.center,
+                                        child: new Text(
+                                          '  '+m.name,
+                                          style: TextStyle(fontSize: 20),
+                                        ),
+                                      ),
                                   ),
                                   new Padding(
                                       padding: EdgeInsets.only(top: 20)),
                                   new Align(
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
-                                      'Medicine Description',
-                                      style: TextStyle(fontSize: 20),
+                                      'Medicine Description : ',
+                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
-                                  new TextField(
-                                    controller: dis,
-                                    keyboardType: TextInputType.multiline,
-                                    maxLines: 10,
-                                    decoration: InputDecoration(
-                                        hintText: "Medicine Description",
-                                        labelStyle: textStyle,
-                                        contentPadding: EdgeInsets.fromLTRB(
-                                            20.0, 15.0, 20.0, 15.0),
-                                        fillColor: Colors.white,
-                                        filled: true,
-                                        border: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.blueAccent,
-                                                width: 32.0),
-                                            borderRadius:
-                                                BorderRadius.circular(20.0)),
-                                        focusedBorder: OutlineInputBorder(
-                                            borderSide: BorderSide(
-                                                color: Colors.white,
-                                                width: 32.0),
-                                            borderRadius:
-                                                BorderRadius.circular(20.0))),
+                                  new Container(
+                                    child: new Align(
+                                      alignment: Alignment.center,
+                                      child: new Text(
+                                        '  '+m.details,
+                                        maxLines: 10,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 20)),
+                                  new Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: new Text(
+                                      'Add Or Edit Date And Time : ',
+                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+                                  new Container(
+                                    child: new Align(
+                                      alignment: Alignment.center,
+                                      child: new Text(
+                                        '  '+m.date,
+                                        maxLines: 10,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ),
                                   ),
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
@@ -123,29 +125,18 @@ class _AddMedicineState extends State<AddMedicine> {
                               width: 300.0,
                               height: 50.0,
                               child: new OutlineButton(
-                                onPressed: () async {
-                                  MainContoller.i = true;
-                                  var now = new DateTime.now();
-                                  String date =
-                                      new DateFormat("yyyy-MM-dd HH:mm:ss")
-                                          .format(now);
-                                  await new CRUDModel().addMedicine(new Medicine(null,name.text,dis.text,date,FirebaseDataApi.useremail));
-                                  Navigator.pushReplacement(
-                                    context,
-                                    MaterialPageRoute(builder: (context) => new ShowList()),
-                                  );
-                                },
+                                onPressed: () => Navigator.of(context).pop(),
                                 splashColor: Colors.green,
                                 child: new Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
                                     new Icon(
-                                      Icons.add,
+                                      Icons.arrow_back,
                                       size: 50,
                                       color: Colors.white,
                                     ),
                                     Text(
-                                      " Add",
+                                      " Back",
                                       style: TextStyle(
                                           fontWeight: FontWeight.bold,
                                           fontSize: 25,
