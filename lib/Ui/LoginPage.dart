@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
+import '../Utill/FirebaseAuthPr.dart';
+import 'test.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -52,11 +54,17 @@ class LoginPage extends StatelessWidget {
                 width: 300.0,
                 height: 55.0,
                 child: new RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => new LoginPage()),
-                    );
+                  onPressed: ()  async {
+                   bool res= await FirebaseAuthPr().loginwithgoogle();
+                   if(!res){
+                     print('login fail');
+                   }else{
+                     Navigator.pushReplacement(
+                       context,
+                       MaterialPageRoute(builder: (context) => new test()),
+                     );
+                   }
+
                   },
                   color: Colors.white,
                   shape: StadiumBorder(),
@@ -110,11 +118,16 @@ class LoginPage extends StatelessWidget {
                 width: 300.0,
                 height: 55.0,
                 child: new RaisedButton(
-                  onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => new LoginPage()),
-                    );
+                  onPressed: () async {
+                    bool res= await FirebaseAuthPr().loginwithfacebook();
+                    if(!res){
+                      print('login fail');
+                    }else{
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => new test()),
+                      );
+                    }
                   },
                   color: Color.fromARGB(1000, 85, 78, 216),
                   shape: StadiumBorder(),
