@@ -1,11 +1,13 @@
 import 'package:MediScope/Utill/FirebaseData.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../Utill/Medicine.dart';
 import '../Utill/CRUDModel.dart';
 import 'FullBackground.dart';
 import '../Utill/FirebaseAuthPr.dart';
 import '../main.dart';
+import 'AddMedicine.dart';
+import 'EditMedicine.dart';
+
 //sachin kumara Liyanage
 //IT17152938
 class ShowList extends StatefulWidget{
@@ -29,12 +31,12 @@ class _ShowLists extends State<ShowList>{
       value.forEach((element) {
         if(element.email==FirebaseDataApi.useremail){
           if(search==''||search==null){
-            list.add(new _MedicineContainerCreator(new Medicine(element.id, element.name,element.details,element.date,element.email)).build(this.context));
+            list.add(new _MedicineContainerCreator(new Medicine(element.id, element.name,element.details,element.date,element.email),this).build(this.context));
           }else{
             List<String> a= element.name.split(search);
             print(a.length);
             if(a.length>1){
-              list.add(new _MedicineContainerCreator(new Medicine(element.id, element.name,element.details,element.date,element.email)).build(this.context));
+              list.add(new _MedicineContainerCreator(new Medicine(element.id, element.name,element.details,element.date,element.email),this).build(this.context));
             }
           }
 
@@ -143,7 +145,10 @@ class _ShowLists extends State<ShowList>{
 
                   child: new OutlineButton(
                     onPressed: () {
-
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => new AddMedicine()),
+                      );
                     },
                     splashColor: Colors.green,
                     child: new Row(
@@ -177,8 +182,9 @@ class _ShowLists extends State<ShowList>{
 
 class _MedicineContainerCreator {
   Medicine m;
+  _ShowLists aa;
 
-  _MedicineContainerCreator(this.m);
+  _MedicineContainerCreator(this.m,this.aa);
 
 
   Widget build(BuildContext context) {
@@ -224,7 +230,7 @@ class _MedicineContainerCreator {
                             ),
                             child: new IconButton(
                               icon: Icon(Icons.remove_red_eye),
-                              tooltip: 'LogOut',
+                              tooltip: 'View',
                               splashColor: Colors.white,
                               iconSize: 40,
                               onPressed: () {
@@ -247,11 +253,14 @@ class _MedicineContainerCreator {
                             ),
                             child: new IconButton(
                               icon: Icon(Icons.edit),
-                              tooltip: 'LogOut',
+                              tooltip: 'Edit',
                               splashColor: Colors.white,
                               iconSize: 40,
                               onPressed: () {
-
+                                Navigator.push(
+                                  aa.context,
+                                  MaterialPageRoute(builder: (context) => new EditMedicine(m)),
+                                );
                               },
                             ),
                           ),
@@ -270,11 +279,15 @@ class _MedicineContainerCreator {
                             ),
                             child: new IconButton(
                               icon: Icon(Icons.delete),
-                              tooltip: 'LogOut',
+                              tooltip: 'Delete',
                               splashColor: Colors.white,
                               iconSize: 40,
-                              onPressed: () {
+                              onPressed: () async {
+                                  MainContoller.i=true;
+                                  await CRUDModel().removeMedicine(m.id);
+                                  aa.setState(() {
 
+                                  });
                               },
                             ),
                           )

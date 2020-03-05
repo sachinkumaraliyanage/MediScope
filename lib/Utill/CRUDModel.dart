@@ -11,9 +11,7 @@ class CRUDModel extends ChangeNotifier {
 
 
   Future<List<Medicine>> fetchMedicines() async {
-    print("sachin ");
     var result = await _api.getDataCollection();
-    print("sachin ");
     products = result.documents
         .map((doc) => Medicine.fromMap(doc.data, doc.documentID))
         .toList();
