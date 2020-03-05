@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
 import 'HomeList.dart';
+import 'ShowList.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -17,7 +18,7 @@ class _SplashScreenState extends State<SplashScreenHome>{
     Timer(Duration(seconds: 3), ()=>{
       Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => new HomeList()),
+      MaterialPageRoute(builder: (context) => new ShowList()),
       ),
     });
   }

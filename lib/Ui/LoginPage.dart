@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'FullBackground.dart';
 import '../Utill/FirebaseAuthPr.dart';
 import 'HomeList.dart';
+import '../main.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -62,7 +63,7 @@ class LoginPage extends StatelessWidget {
                    }else{
                      Navigator.pushReplacement(
                        context,
-                       MaterialPageRoute(builder: (context) => new HomeList()),
+                       MaterialPageRoute(builder: (context) => new MainContoller()),
                      );
                    }
 
@@ -127,7 +128,7 @@ class LoginPage extends StatelessWidget {
                     }else{
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => new HomeList()),
+                        MaterialPageRoute(builder: (context) => new MainContoller()),
                       );
                     }
                   },

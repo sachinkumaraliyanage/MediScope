@@ -3,24 +3,31 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'Ui/SplashScreenHome.dart';
 import 'Ui/SplashScreenLogin.dart';
+import 'Utill/FirebaseData.dart';
+import 'Utill/locator.dart';
 
 //sachin kumara Liyanage
 //IT17152938
-void main() => runApp( MaterialApp(
-  debugShowCheckedModeBanner: false,
-  title: 'CTSE Final Progect',
-  home:MainContoller(),
+void main(){
+  setupLocator();
+  runApp( MaterialApp(
+    debugShowCheckedModeBanner: false,
+    title: 'CTSE Final Progect',
+    home:MainContoller(),
 //  home:LoginPage(),
-),
-);
+  ),
+  );
+}
 
 class MainContoller extends StatelessWidget{
+  static bool i=true;
   @override
   Widget build(BuildContext context) {
     return StreamBuilder(
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (context,AsyncSnapshot<FirebaseUser> snapshot){
 
+//
         if(snapshot.connectionState==ConnectionState.waiting){
 
             return SplashScreenLogin();
@@ -30,7 +37,7 @@ class MainContoller extends StatelessWidget{
           return SplashScreenLogin();
 
         }
-
+        FirebaseDataApi.useremail=snapshot.data.email;
 
         return SplashScreenHome();
 
@@ -39,4 +46,7 @@ class MainContoller extends StatelessWidget{
   }
 
 }
+
+
+
 

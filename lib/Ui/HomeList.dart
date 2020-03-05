@@ -16,26 +16,10 @@ class HomeList extends StatefulWidget{
 class _HomeList extends State<HomeList>{
   String search='';
 
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-//      appBar: new AppBar(
-//        backgroundColor: Colors.green,
-//        leading: new IconButton(
-//          icon: new Icon(Icons.lock, color: Colors.black,size: 40,),
-//          onPressed: () async {
-//            await FirebaseAuthPr().logout();
-//
-//            Navigator.pushReplacement(
-//              context,
-//              MaterialPageRoute(builder: (context) => new MainContoller()),
-//            );
-//
-//          },
-//        ),
-//        title: Text("Medi Scope",style: TextStyle(color: Colors.white,fontWeight: FontWeight.bold),),
-//        centerTitle: true,
-//      ),
       body:  new Stack(
           children: <Widget>[
             new FullBackground('assets/backimg/backlogin.jpg', 3.0, 3.0, 0.4),
