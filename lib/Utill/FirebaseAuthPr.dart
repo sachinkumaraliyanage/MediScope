@@ -2,6 +2,10 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+
+//sachin kumara Liyanage
+//IT17152938
+
 class FirebaseAuthPr{
    final FirebaseAuth _auth= FirebaseAuth.instance;
 
@@ -41,7 +45,9 @@ class FirebaseAuthPr{
    Future<bool> loginwithfacebook() async {
       try{
          FacebookLogin facebookLogin =new FacebookLogin();
+
          var re= await facebookLogin.logIn(['email','public_profile']);
+
          if(re.status==FacebookLoginStatus.loggedIn){
             AuthResult res=  await _auth.signInWithCredential(FacebookAuthProvider.getCredential(
                accessToken: re.accessToken.token
@@ -54,6 +60,7 @@ class FirebaseAuthPr{
             return true;
 
          }else{
+            print(re.errorMessage);
             print(re.status.toString());
             return false;
          }

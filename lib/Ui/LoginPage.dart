@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
 import '../Utill/FirebaseAuthPr.dart';
-import 'test.dart';
+import 'HomeList.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -54,6 +54,7 @@ class LoginPage extends StatelessWidget {
                 width: 300.0,
                 height: 55.0,
                 child: new RaisedButton(
+                  splashColor: Colors.green,
                   onPressed: ()  async {
                    bool res= await FirebaseAuthPr().loginwithgoogle();
                    if(!res){
@@ -61,7 +62,7 @@ class LoginPage extends StatelessWidget {
                    }else{
                      Navigator.pushReplacement(
                        context,
-                       MaterialPageRoute(builder: (context) => new test()),
+                       MaterialPageRoute(builder: (context) => new HomeList()),
                      );
                    }
 
@@ -118,6 +119,7 @@ class LoginPage extends StatelessWidget {
                 width: 300.0,
                 height: 55.0,
                 child: new RaisedButton(
+                  splashColor: Colors.green,
                   onPressed: () async {
                     bool res= await FirebaseAuthPr().loginwithfacebook();
                     if(!res){
@@ -125,7 +127,7 @@ class LoginPage extends StatelessWidget {
                     }else{
                       Navigator.pushReplacement(
                         context,
-                        MaterialPageRoute(builder: (context) => new test()),
+                        MaterialPageRoute(builder: (context) => new HomeList()),
                       );
                     }
                   },

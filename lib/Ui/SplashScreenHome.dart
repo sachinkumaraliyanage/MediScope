@@ -1,8 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
-import 'LoginPage.dart';
-import 'test.dart';
+import 'HomeList.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -18,7 +17,7 @@ class _SplashScreenState extends State<SplashScreenHome>{
     Timer(Duration(seconds: 3), ()=>{
       Navigator.pushReplacement(
       context,
-      MaterialPageRoute(builder: (context) => new test()),
+      MaterialPageRoute(builder: (context) => new HomeList()),
       ),
     });
   }

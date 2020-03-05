@@ -1,7 +1,6 @@
 
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'Ui/SplashScreen.dart';
 import 'Ui/SplashScreenHome.dart';
 import 'Ui/SplashScreenLogin.dart';
 
@@ -21,14 +20,20 @@ class MainContoller extends StatelessWidget{
     return StreamBuilder(
       stream: FirebaseAuth.instance.onAuthStateChanged,
       builder: (context,AsyncSnapshot<FirebaseUser> snapshot){
+
         if(snapshot.connectionState==ConnectionState.waiting){
-          return SplashScreen();
+
+            return SplashScreenLogin();
         }
         if(!snapshot.hasData || snapshot.data==null){
+
           return SplashScreenLogin();
+
         }
 
+
         return SplashScreenHome();
+
       },
     );
   }
