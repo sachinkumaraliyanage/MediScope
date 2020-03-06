@@ -8,6 +8,7 @@ import '../main.dart';
 import 'AddMedicine.dart';
 import 'ViewMedicine.dart';
 import 'EditMedicine.dart';
+import 'LoginPage.dart';
 
 
 //sachin kumara Liyanage
@@ -80,10 +81,10 @@ class _ShowLists extends State<ShowList>{
                         iconSize: 40,
                         onPressed: () async {
                           await FirebaseAuthPr().logout();
-
+                          MainContoller.i=true;
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => new MainContoller()),
+                            MaterialPageRoute(builder: (context) => new LoginPage()),
                           );
 
                         },

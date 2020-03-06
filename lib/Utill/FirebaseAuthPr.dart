@@ -1,7 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
+import 'FirebaseData.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -12,6 +12,7 @@ class FirebaseAuthPr{
    Future<void> logout() async {
       try{
          await _auth.signOut();
+         FirebaseDataApi.useremail="";
       }catch(e){
          print(e);
       }
@@ -33,7 +34,7 @@ class FirebaseAuthPr{
          if(res.user==null){
             return false;
          }
-
+         FirebaseDataApi.useremail=res.user.email;
          return true;
 
       }catch(e){
@@ -56,7 +57,7 @@ class FirebaseAuthPr{
             if(res.user==null){
                return false;
             }
-
+            FirebaseDataApi.useremail=res.user.email;
             return true;
 
          }else{
