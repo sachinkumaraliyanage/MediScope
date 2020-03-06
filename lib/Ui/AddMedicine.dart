@@ -16,11 +16,12 @@ class AddMedicine extends StatefulWidget {
 class _AddMedicineState extends State<AddMedicine> {
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
-
+  final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     TextStyle textStyle = Theme.of(context).textTheme.headline5;
     return Scaffold(
+      key: _scaffoldkey,
       body: Center(
         child: new Container(
           child: new Stack(
@@ -124,6 +125,11 @@ class _AddMedicineState extends State<AddMedicine> {
                               height: 50.0,
                               child: new OutlineButton(
                                 onPressed: () async {
+                                  _scaffoldkey.currentState.showSnackBar(SnackBar(
+                                    content: new Text("Please Wait ",),
+                                  ),
+
+                                  );
                                   MainContoller.i = true;
                                   var now = new DateTime.now();
                                   String date =
