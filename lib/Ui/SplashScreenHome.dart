@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
-import 'HomeList.dart';
+
 import 'ShowList.dart';
 
 //sachin kumara Liyanage

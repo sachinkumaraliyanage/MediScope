@@ -288,11 +288,7 @@ class _MedicineContainerCreator {
                               splashColor: Colors.white,
                               iconSize: 40,
                               onPressed: () async {
-                                  MainContoller.i=true;
-                                  await CRUDModel().removeMedicine(m.id);
-                                  aa.setState(() {
-
-                                  });
+                                showAlertDialog(aa.context,m,aa);
                               },
                             ),
                           )
@@ -309,6 +305,49 @@ class _MedicineContainerCreator {
           ),
         ],
       )
+    );
+  }
+
+  showAlertDialog(BuildContext context2,Medicine m,_ShowLists aa) {
+
+
+
+    // show the dialog
+    showDialog(
+      context: context2,
+      builder: (BuildContext context) {
+        // set up the buttons
+        Widget delButton = FlatButton(
+          child: Text("Delete"),
+          onPressed:  () async {
+            MainContoller.i=true;
+            await CRUDModel().removeMedicine(m.id);
+            Navigator.of(context).pop();
+            aa.setState(() {
+
+            });
+
+          },
+        );
+        Widget cancelButton = FlatButton(
+          child: Text("Cancel"),
+          onPressed:  ()  {
+            Navigator.of(context).pop();
+          },
+        );
+
+
+        // set up the AlertDialog
+        AlertDialog alert = AlertDialog(
+          title: Text("Alert"),
+          content: Text("Do you Want to Delete "+m.name),
+          actions: [
+            delButton,
+            cancelButton,
+          ],
+        );
+        return alert;
+      },
     );
   }
 
