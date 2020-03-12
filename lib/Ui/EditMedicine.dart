@@ -7,11 +7,15 @@ import '../main.dart';
 import '../Utill/CRUDModel.dart';
 import '../Utill/Medicine.dart';
 import 'ShowList.dart';
+import 'ImageCapture.dart';
 
 class EditMedicine extends StatefulWidget {
+
   Medicine m;
 
-  EditMedicine(this.m);
+  EditMedicine(this.m){
+    Medicine.imgurl=m.img;
+  }
 
   @override
   State<StatefulWidget> createState() => _EditMedicineState(m);
@@ -19,6 +23,7 @@ class EditMedicine extends StatefulWidget {
 
 class _EditMedicineState extends State<EditMedicine> {
   Medicine m;
+
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
@@ -28,8 +33,11 @@ class _EditMedicineState extends State<EditMedicine> {
 
   @override
   Widget build(BuildContext context) {
+
+    Medicine.s=this;
     name.text=m.name;
     dis.text=m.details;
+
     TextStyle textStyle = Theme.of(context).textTheme.headline5;
     return Scaffold(
       key: _scaffoldkey,
@@ -126,6 +134,40 @@ class _EditMedicineState extends State<EditMedicine> {
                                                 BorderRadius.circular(20.0))),
                                   ),
                                   new Padding(
+                                      padding: EdgeInsets.only(top: 20)),
+                                  new Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: new Text(
+                                      'Add Photo',
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+                                  new FlatButton.icon(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => new ImageCapture()),
+                                      );
+
+                                    },
+                                    icon: Icon(
+                                      Icons.cloud_upload,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                    label: new Text(
+                                      'Upload Image',
+                                      style: TextStyle(color: Colors.white, fontSize: 20),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+//                                  _logeimage();
+                                  Image.network(Medicine.imgurl,width: 100,),
+                                  new Padding(
                                       padding: EdgeInsets.only(top: 10)),
                                 ],
                               ),
@@ -146,7 +188,8 @@ class _EditMedicineState extends State<EditMedicine> {
                                   String date =
                                       new DateFormat("yyyy-MM-dd HH:mm:ss")
                                           .format(now);
-                                  await new CRUDModel().updateMedicine(new Medicine(m.id,name.text,dis.text,date,FirebaseDataApi.useremail),m.id);
+                                  await new CRUDModel().updateMedicine(new Medicine(m.id,name.text,dis.text,date,FirebaseDataApi.useremail,Medicine.imgurl),m.id);
+                                  Medicine.imgurl=" ";
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(builder: (context) => new ShowList()),

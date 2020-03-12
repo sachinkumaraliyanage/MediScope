@@ -10,60 +10,56 @@ import 'ViewMedicine.dart';
 import 'EditMedicine.dart';
 import 'LoginPage.dart';
 
-
 //sachin kumara Liyanage
 //IT17152938
-class ShowList extends StatefulWidget{
-
+class ShowList extends StatefulWidget {
   @override
-  State<StatefulWidget> createState() =>_ShowLists();
-
-
-
+  State<StatefulWidget> createState() => _ShowLists();
 }
 
+class _ShowLists extends State<ShowList> {
+  String search = '';
+  List<Widget> list = new List<Widget>();
 
-class _ShowLists extends State<ShowList>{
-  String search='';
-  List <Widget> list=new List<Widget>();
-
-  void setlist() async{
-    await new CRUDModel().fetchMedicines().then((value){
+  void setlist() async {
+    await new CRUDModel().fetchMedicines().then((value) {
       print("sachin ");
-      list=new List();
+      list = new List();
       value.forEach((element) {
-        if(element.email==FirebaseDataApi.useremail){
-          if(search==''||search==null){
-            list.add(new _MedicineContainerCreator(new Medicine(element.id, element.name,element.details,element.date,element.email),this).build(this.context));
-          }else{
-            List<String> a= element.name.split(search);
+        if (element.email == FirebaseDataApi.useremail) {
+          if (search == '' || search == null) {
+            list.add(new _MedicineContainerCreator(
+                    new Medicine(element.id, element.name, element.details,
+                        element.date, element.email, element.img),
+                    this)
+                .build(this.context));
+          } else {
+            List<String> a = element.name.split(search);
             print(a.length);
-            if(a.length>1){
-              list.add(new _MedicineContainerCreator(new Medicine(element.id, element.name,element.details,element.date,element.email),this).build(this.context));
+            if (a.length > 1) {
+              list.add(new _MedicineContainerCreator(
+                      new Medicine(element.id, element.name, element.details,
+                          element.date, element.email, element.img),
+                      this)
+                  .build(this.context));
             }
           }
-
         }
       });
-
     });
 
-    setState(() {
-
-    });
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    if(MainContoller.i){
-      MainContoller.i=false;
+    if (MainContoller.i) {
+      MainContoller.i = false;
       setlist();
     }
 
-
-
     return Scaffold(
-      body:  new Stack(
+      body: new Stack(
         children: <Widget>[
           new FullBackground('assets/backimg/backlogin.jpg', 3.0, 3.0, 0.4),
           new Column(
@@ -71,7 +67,8 @@ class _ShowLists extends State<ShowList>{
               new Align(
                 alignment: Alignment.topCenter,
                 child: new Container(
-                  padding: EdgeInsets.only(bottom: 5,top: 35,left: 5,right: 20),
+                  padding:
+                      EdgeInsets.only(bottom: 5, top: 35, left: 5, right: 20),
                   child: new Row(
                     children: <Widget>[
                       new IconButton(
@@ -81,22 +78,21 @@ class _ShowLists extends State<ShowList>{
                         iconSize: 40,
                         onPressed: () async {
                           await FirebaseAuthPr().logout();
-                          MainContoller.i=true;
+                          MainContoller.i = true;
                           Navigator.pushReplacement(
                             context,
-                            MaterialPageRoute(builder: (context) => new LoginPage()),
+                            MaterialPageRoute(
+                                builder: (context) => new LoginPage()),
                           );
-
                         },
                       ),
-
                       new Expanded(
                         child: TextField(
                             keyboardType: TextInputType.text,
-                            onChanged: (String val){
+                            onChanged: (String val) {
                               setState(() {
-                                search=val;
-                                MainContoller.i=true;
+                                search = val;
+                                MainContoller.i = true;
                               });
                             },
                             style: TextStyle(
@@ -104,60 +100,59 @@ class _ShowLists extends State<ShowList>{
                               color: Colors.blueAccent,
                             ),
                             decoration: InputDecoration(
-                                contentPadding: EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
+                                contentPadding:
+                                    EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),
                                 prefixIcon: Icon(Icons.search),
                                 fillColor: Colors.white,
                                 filled: true,
                                 hintText: "Search By Name",
                                 border: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.blueAccent, width: 32.0),
+                                    borderSide: BorderSide(
+                                        color: Colors.blueAccent, width: 32.0),
                                     borderRadius: BorderRadius.circular(20.0)),
                                 focusedBorder: OutlineInputBorder(
-                                    borderSide: BorderSide(color: Colors.white, width: 32.0),
-                                    borderRadius: BorderRadius.circular(20.0)
-                                )
-                            )
-                        ),
+                                    borderSide: BorderSide(
+                                        color: Colors.white, width: 32.0),
+                                    borderRadius:
+                                        BorderRadius.circular(20.0)))),
                       )
-
                     ],
                   ),
                 ),
               ),
-
-              new Expanded(child: new SingleChildScrollView(
-                child:new Column(
-                  children:list,
+              new Expanded(
+                  child: new SingleChildScrollView(
+                child: new Column(
+                  children: list,
                 ),
               )),
-
               new Padding(padding: EdgeInsets.only(bottom: 60)),
-
             ],
           ),
-
-
-
           new Align(
-              alignment:Alignment.bottomCenter,
+              alignment: Alignment.bottomCenter,
               child: new Container(
-                padding: EdgeInsets.only(bottom: 5,top: 10),
+                padding: EdgeInsets.only(bottom: 5, top: 10),
                 child: new SizedBox(
                   width: 300.0,
                   height: 50.0,
-
                   child: new OutlineButton(
                     onPressed: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => new AddMedicine()),
+                        MaterialPageRoute(
+                            builder: (context) => new AddMedicine()),
                       );
                     },
                     splashColor: Colors.green,
                     child: new Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: <Widget>[
-                        new Icon(Icons.add,size: 50,color: Colors.white,),
+                        new Icon(
+                          Icons.add,
+                          size: 50,
+                          color: Colors.white,
+                        ),
                         Text(
                           " Add Data",
                           style: TextStyle(
@@ -167,152 +162,145 @@ class _ShowLists extends State<ShowList>{
                         ),
                       ],
                     ),
-                    borderSide: BorderSide(color: Colors.white,width: 4),
+                    borderSide: BorderSide(color: Colors.white, width: 4),
                     shape: StadiumBorder(),
                   ),
                 ),
-              )
-          ),
-
-
+              )),
         ],
       ),
-
     );
   }
-
 }
 
 class _MedicineContainerCreator {
   Medicine m;
   _ShowLists aa;
 
-  _MedicineContainerCreator(this.m,this.aa);
-
+  _MedicineContainerCreator(this.m, this.aa);
 
   Widget build(BuildContext context) {
     return Container(
-      child:new Column(
-        children: <Widget>[
-          new Container(
-        padding: EdgeInsets.only(top:5,bottom: 5 ,left: 20,right: 20),
-            child: new Container(
-              padding: EdgeInsets.only(top:10,bottom: 10),
-              decoration: BoxDecoration(
-                color: Colors.white.withOpacity(0.4),
+        child:
 
-                borderRadius: BorderRadius.all(
-                    Radius.circular(10.0)
+        new Column(
+          children: <Widget>[
+            new Container(
+              padding: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+              child: new Container(
+                padding: EdgeInsets.only(top: 10, bottom: 10),
+                decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.4),
+                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+                ),
+                child: new Row(
+                  children: <Widget>[
+                    Padding(padding: EdgeInsets.only(left: 10),),
+                    Image.network(m.img,width: 100,),
+                    Padding(padding: EdgeInsets.only(left: 20),),
+                    new Column(
+                      children: <Widget>[
+                        new Text(
+                          m.name,
+                          style: TextStyle(
+                            color: Colors.black,
+                            fontSize: 25,
+                          ),
+                        ),
+                        new Container(
+                            padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                new Container(
+                                  decoration: BoxDecoration(
+                                    color: Colors.green.withOpacity(0.4),
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.5),
+                                      width: 4,
+                                    ),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(50.0)),
+                                  ),
+                                  child: new IconButton(
+                                    icon: Icon(Icons.remove_red_eye),
+                                    tooltip: 'View',
+                                    splashColor: Colors.white,
+                                    iconSize: 40,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        aa.context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            new ViewMedicine(m)),
+                                      );
+                                    },
+                                  ),
+                                ),
+                                new Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.amber.withOpacity(0.4),
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.5),
+                                      width: 4,
+                                    ),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(50.0)),
+                                  ),
+                                  child: new IconButton(
+                                    icon: Icon(Icons.edit),
+                                    tooltip: 'Edit',
+                                    splashColor: Colors.white,
+                                    iconSize: 40,
+                                    onPressed: () {
+                                      Navigator.push(
+                                        aa.context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                            new EditMedicine(m)),
+                                      );
+                                    },
+                                  ),
+                                ),
+                                new Container(
+                                  margin: EdgeInsets.only(left: 10),
+                                  decoration: BoxDecoration(
+                                    color: Colors.red.withOpacity(0.4),
+                                    border: Border.all(
+                                      color: Colors.white.withOpacity(0.5),
+                                      width: 4,
+                                    ),
+                                    borderRadius:
+                                    BorderRadius.all(Radius.circular(50.0)),
+                                  ),
+                                  child: new IconButton(
+                                    icon: Icon(Icons.delete),
+                                    tooltip: 'Delete',
+                                    splashColor: Colors.white,
+                                    iconSize: 40,
+                                    onPressed: () async {
+                                      showAlertDialog(aa.context, m, aa);
+                                    },
+                                  ),
+                                )
+                              ],
+                            )),
+                      ],
+                    ),
+                  ],
                 ),
               ),
-              child: new Column(
-                children: <Widget>[
-                  new Text(
-                      m.name,
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 25,
-                    ),
-                  ),
-                  new Container(
-                    padding: EdgeInsets.only(left: 10,right: 10,top: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          new Container(
-                            decoration: BoxDecoration(
-                              color: Colors.green.withOpacity(0.4),
-                              border: Border.all(
-                                color: Colors.white.withOpacity(0.5),
-                                width: 4,
-
-                              ),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(50.0)
-                              ),
-                            ),
-                            child: new IconButton(
-                              icon: Icon(Icons.remove_red_eye),
-                              tooltip: 'View',
-                              splashColor: Colors.white,
-                              iconSize: 40,
-                              onPressed: () {
-                                Navigator.push(
-                                  aa.context,
-                                  MaterialPageRoute(builder: (context) => new ViewMedicine(m)),
-                                );
-                              },
-                            ),
-                          ),
-                          new Container(
-                            margin: EdgeInsets.only(left: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.amber.withOpacity(0.4),
-                              border: Border.all(
-                                color: Colors.white.withOpacity(0.5),
-                                width: 4,
-
-                              ),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(50.0)
-                              ),
-                            ),
-                            child: new IconButton(
-                              icon: Icon(Icons.edit),
-                              tooltip: 'Edit',
-                              splashColor: Colors.white,
-                              iconSize: 40,
-                              onPressed: () {
-                                Navigator.push(
-                                  aa.context,
-                                  MaterialPageRoute(builder: (context) => new EditMedicine(m)),
-                                );
-                              },
-                            ),
-                          ),
-                          new Container(
-                            margin: EdgeInsets.only(left: 10),
-                            decoration: BoxDecoration(
-                              color: Colors.red.withOpacity(0.4),
-                              border: Border.all(
-                                color: Colors.white.withOpacity(0.5),
-                                width: 4,
-
-                              ),
-                              borderRadius: BorderRadius.all(
-                                  Radius.circular(50.0)
-                              ),
-                            ),
-                            child: new IconButton(
-                              icon: Icon(Icons.delete),
-                              tooltip: 'Delete',
-                              splashColor: Colors.white,
-                              iconSize: 40,
-                              onPressed: () async {
-                                showAlertDialog(aa.context,m,aa);
-                              },
-                            ),
-                          )
-                        ],
-                      )
-                  ),
-                ],
-
-              ),
             ),
-          ),
-          new Padding(
-              padding: EdgeInsets.only(top:10),
-          ),
-        ],
-      )
-    );
+            new Padding(
+              padding: EdgeInsets.only(top: 10),
+            ),
+          ],
+        )
+     );
   }
 
-  showAlertDialog(BuildContext context2,Medicine m,_ShowLists aa) {
-
-
-
+  showAlertDialog(BuildContext context2, Medicine m, _ShowLists aa) {
     // show the dialog
     showDialog(
       context: context2,
@@ -320,28 +308,24 @@ class _MedicineContainerCreator {
         // set up the buttons
         Widget delButton = FlatButton(
           child: Text("Delete"),
-          onPressed:  () async {
-            MainContoller.i=true;
+          onPressed: () async {
+            MainContoller.i = true;
             await CRUDModel().removeMedicine(m.id);
             Navigator.of(context).pop();
-            aa.setState(() {
-
-            });
-
+            aa.setState(() {});
           },
         );
         Widget cancelButton = FlatButton(
           child: Text("Cancel"),
-          onPressed:  ()  {
+          onPressed: () {
             Navigator.of(context).pop();
           },
         );
 
-
         // set up the AlertDialog
         AlertDialog alert = AlertDialog(
           title: Text("Alert"),
-          content: Text("Do you Want to Delete "+m.name),
+          content: Text("Do you Want to Delete " + m.name),
           actions: [
             delButton,
             cancelButton,
@@ -351,5 +335,4 @@ class _MedicineContainerCreator {
       },
     );
   }
-
 }

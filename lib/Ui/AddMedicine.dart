@@ -1,4 +1,5 @@
 import 'package:MediScope/Utill/FirebaseData.dart';
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
@@ -7,18 +8,25 @@ import '../main.dart';
 import '../Utill/CRUDModel.dart';
 import '../Utill/Medicine.dart';
 import 'ShowList.dart';
+import 'ImageCapture.dart';
+import '../Utill/locator.dart';
 
 class AddMedicine extends StatefulWidget {
+
+
   @override
-  State<StatefulWidget> createState() => _AddMedicineState();
+  State<StatefulWidget> createState() => AddMedicineState();
 }
 
-class _AddMedicineState extends State<AddMedicine> {
+class AddMedicineState extends State<AddMedicine> {
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
+
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
+    Medicine.s=this;
+    print(Medicine.imgurl);
     TextStyle textStyle = Theme.of(context).textTheme.headline5;
     return Scaffold(
       key: _scaffoldkey,
@@ -115,16 +123,54 @@ class _AddMedicineState extends State<AddMedicine> {
                                                 BorderRadius.circular(20.0))),
                                   ),
                                   new Padding(
+                                      padding: EdgeInsets.only(top: 20)),
+                                  new Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: new Text(
+                                      'Add Photo',
+                                      style: TextStyle(fontSize: 20),
+                                    ),
+
+                                  ),
+                                  new Padding(
                                       padding: EdgeInsets.only(top: 10)),
+                                  new FlatButton.icon(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(builder: (context) => new ImageCapture()),
+                                      );
+
+                                    },
+                                    icon: Icon(
+                                      Icons.cloud_upload,
+                                      color: Colors.white,
+                                      size: 30,
+                                    ),
+                                    label: new Text(
+                                      'Upload Image',
+                                      style: TextStyle(color: Colors.white, fontSize: 20),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+//                                  _logeimage();
+                                Image.network(Medicine.imgurl,width: 100,),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+
                                 ],
                               ),
+
                             ),
+
                             new Padding(padding: EdgeInsets.only(top: 20)),
                             new SizedBox(
                               width: 300.0,
                               height: 50.0,
                               child: new OutlineButton(
                                 onPressed: () async {
+
                                   _scaffoldkey.currentState.showSnackBar(SnackBar(
                                     content: new Text("Please Wait ",),
                                   ),
@@ -135,7 +181,10 @@ class _AddMedicineState extends State<AddMedicine> {
                                   String date =
                                       new DateFormat("yyyy-MM-dd HH:mm:ss")
                                           .format(now);
-                                  await new CRUDModel().addMedicine(new Medicine(null,name.text,dis.text,date,FirebaseDataApi.useremail));
+
+
+                                  await new CRUDModel().addMedicine(new Medicine(null,name.text,dis.text,date,FirebaseDataApi.useremail,Medicine.imgurl));
+                                  Medicine.imgurl="";
                                   Navigator.pushReplacement(
                                     context,
                                     MaterialPageRoute(builder: (context) => new ShowList()),
@@ -172,5 +221,13 @@ class _AddMedicineState extends State<AddMedicine> {
         ),
       ),
     );
+  }
+
+  Future<String> _geturl(String url) async{
+//    print("object");
+//    print(await FirebaseStorage(storageBucket: firebaseImageUrl).ref().child(url).getDownloadURL(url).then((value) => value.toString()));
+    String path=await FirebaseStorage(storageBucket: firebaseImageUrl).ref().child(url).getDownloadURL().then((value) => value.toString());
+    print(path);
+    return path;
   }
 }

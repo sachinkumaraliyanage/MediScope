@@ -99,6 +99,18 @@ class _ViewMedicineState extends State<ViewMedicine> {
                                   new Align(
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
+                                      'Image Of Medicine: ',
+                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+                                  Image.network(m.img,width: 100,),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 20)),
+                                  new Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: new Text(
                                       'Add Or Edit Date And Time : ',
                                       style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
                                     ),

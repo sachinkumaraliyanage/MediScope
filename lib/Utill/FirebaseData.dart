@@ -25,7 +25,7 @@ class FirebaseDataApi{
   }
 
   Future<QuerySnapshot> getDataCollection() {
-    return ref.getDocuments() ;
+    return ref.orderBy("date",descending: true).getDocuments() ;
   }
   Stream<QuerySnapshot> streamDataCollection() {
     return ref.snapshots() ;

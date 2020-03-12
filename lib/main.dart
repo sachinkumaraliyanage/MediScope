@@ -5,6 +5,7 @@ import 'Ui/SplashScreenHome.dart';
 import 'Ui/SplashScreenLogin.dart';
 import 'Utill/FirebaseData.dart';
 import 'Utill/locator.dart';
+import 'Ui/ImageCapture.dart';
 
 //sachin kumara Liyanage
 //IT17152938
@@ -14,7 +15,7 @@ void main(){
     debugShowCheckedModeBanner: false,
     title: 'CTSE Final Progect',
     home:MainContoller(),
-//  home:LoginPage(),
+//  home:ImageCapture(),
   ),
   );
 }
