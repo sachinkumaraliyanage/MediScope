@@ -138,7 +138,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                   new Align(
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
-                                      'Add Photo',
+                                      'Edit Photo',
                                       style: TextStyle(fontSize: 20),
                                     ),
 
