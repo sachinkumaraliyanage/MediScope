@@ -25,7 +25,8 @@ class FirebaseDataApi{
   }
 
   Future<QuerySnapshot> getDataCollection() {
-    return ref.orderBy("date",descending: true).getDocuments() ;
+    print(FirebaseDataApi.useremail);
+    return ref.orderBy("date",descending: true).where("email",isEqualTo: FirebaseDataApi.useremail).getDocuments() ;
   }
   Stream<QuerySnapshot> streamDataCollection() {
     return ref.snapshots() ;

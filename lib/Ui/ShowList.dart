@@ -26,7 +26,7 @@ class _ShowLists extends State<ShowList> {
       print("sachin ");
       list = new List();
       value.forEach((element) {
-        if (element.email == FirebaseDataApi.useremail) {
+//        if (element.email == FirebaseDataApi.useremail) {
           if (search == '' || search == null) {
             list.add(new _MedicineContainerCreator(
                     new Medicine(element.id, element.name, element.details,
@@ -44,7 +44,7 @@ class _ShowLists extends State<ShowList> {
                   .build(this.context));
             }
           }
-        }
+//        }
       });
     });
 
