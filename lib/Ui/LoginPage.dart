@@ -56,18 +56,17 @@ class LoginPage extends StatelessWidget {
                 height: 55.0,
                 child: new RaisedButton(
                   splashColor: Colors.green,
-                  onPressed: ()  async {
-                    MainContoller.i=true;
-                   bool res= await FirebaseAuthPr().loginwithgoogle();
-                   if(!res){
-                     print('login fail');
-                   }else{
-                     Navigator.pushReplacement(
-                       context,
-                       MaterialPageRoute(builder: (context) => new ShowList()),
-                     );
-                   }
-
+                  onPressed: () async {
+                    MainContoller.i = true;
+                    bool res = await FirebaseAuthPr().loginwithgoogle();
+                    if (!res) {
+                      print('login fail');
+                    } else {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => new ShowList()),
+                      );
+                    }
                   },
                   color: Colors.white,
                   shape: StadiumBorder(),
@@ -123,11 +122,11 @@ class LoginPage extends StatelessWidget {
                 child: new RaisedButton(
                   splashColor: Colors.green,
                   onPressed: () async {
-                    MainContoller.i=true;
-                    bool res= await FirebaseAuthPr().loginwithfacebook();
-                    if(!res){
+                    MainContoller.i = true;
+                    bool res = await FirebaseAuthPr().loginwithfacebook();
+                    if (!res) {
                       print('login fail');
-                    }else{
+                    } else {
                       Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(builder: (context) => new ShowList()),

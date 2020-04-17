@@ -27,23 +27,23 @@ class _ShowLists extends State<ShowList> {
       list = new List();
       value.forEach((element) {
 //        if (element.email == FirebaseDataApi.useremail) {
-          if (search == '' || search == null) {
+        if (search == '' || search == null) {
+          list.add(new _MedicineContainerCreator(
+                  new Medicine(element.id, element.name, element.details,
+                      element.date, element.email, element.img),
+                  this)
+              .build(this.context));
+        } else {
+          List<String> a = element.name.split(search);
+          print(a.length);
+          if (a.length > 1) {
             list.add(new _MedicineContainerCreator(
                     new Medicine(element.id, element.name, element.details,
                         element.date, element.email, element.img),
                     this)
                 .build(this.context));
-          } else {
-            List<String> a = element.name.split(search);
-            print(a.length);
-            if (a.length > 1) {
-              list.add(new _MedicineContainerCreator(
-                      new Medicine(element.id, element.name, element.details,
-                          element.date, element.email, element.img),
-                      this)
-                  .build(this.context));
-            }
           }
+        }
 //        }
       });
     });
@@ -181,123 +181,127 @@ class _MedicineContainerCreator {
 
   Widget build(BuildContext context) {
     return Container(
-        child:
-
-        new Column(
-          children: <Widget>[
-            new Container(
-              padding: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
-              child: new Container(
-                padding: EdgeInsets.only(top: 10, bottom: 10),
-                decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.4),
-                  borderRadius: BorderRadius.all(Radius.circular(10.0)),
+        child: new Column(
+      children: <Widget>[
+        new Container(
+          padding: EdgeInsets.only(top: 5, bottom: 5, left: 20, right: 20),
+          child: new Container(
+            padding: EdgeInsets.only(top: 10, bottom: 10),
+            decoration: BoxDecoration(
+              color: Colors.white.withOpacity(0.4),
+              borderRadius: BorderRadius.all(Radius.circular(10.0)),
+            ),
+            child: new Row(
+              children: <Widget>[
+                Padding(
+                  padding: EdgeInsets.only(left: 10),
                 ),
-                child: new Row(
+                Image.network(
+                  m.img,
+                  width: 100,
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 20),
+                ),
+                new Column(
                   children: <Widget>[
-                    Padding(padding: EdgeInsets.only(left: 10),),
-                    Image.network(m.img,width: 100,),
-                    Padding(padding: EdgeInsets.only(left: 20),),
-                    new Column(
-                      children: <Widget>[
-                        new Text(
-                          m.name,
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
-                          ),
-                        ),
-                        new Container(
-                            padding: EdgeInsets.only(left: 10, right: 10, top: 5),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: <Widget>[
-                                new Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.green.withOpacity(0.4),
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.5),
-                                      width: 4,
-                                    ),
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(50.0)),
-                                  ),
-                                  child: new IconButton(
-                                    icon: Icon(Icons.remove_red_eye),
-                                    tooltip: 'View',
-                                    splashColor: Colors.white,
-                                    iconSize: 40,
-                                    onPressed: () {
-                                      Navigator.push(
-                                        aa.context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                            new ViewMedicine(m)),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                new Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.amber.withOpacity(0.4),
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.5),
-                                      width: 4,
-                                    ),
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(50.0)),
-                                  ),
-                                  child: new IconButton(
-                                    icon: Icon(Icons.edit),
-                                    tooltip: 'Edit',
-                                    splashColor: Colors.white,
-                                    iconSize: 40,
-                                    onPressed: () {
-                                      Navigator.push(
-                                        aa.context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                            new EditMedicine(m)),
-                                      );
-                                    },
-                                  ),
-                                ),
-                                new Container(
-                                  margin: EdgeInsets.only(left: 10),
-                                  decoration: BoxDecoration(
-                                    color: Colors.red.withOpacity(0.4),
-                                    border: Border.all(
-                                      color: Colors.white.withOpacity(0.5),
-                                      width: 4,
-                                    ),
-                                    borderRadius:
-                                    BorderRadius.all(Radius.circular(50.0)),
-                                  ),
-                                  child: new IconButton(
-                                    icon: Icon(Icons.delete),
-                                    tooltip: 'Delete',
-                                    splashColor: Colors.white,
-                                    iconSize: 40,
-                                    onPressed: () async {
-                                      showAlertDialog(aa.context, m, aa);
-                                    },
-                                  ),
-                                )
-                              ],
-                            )),
-                      ],
+                    new Text(
+                      m.name,
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 25,
+                      ),
                     ),
+                    new Container(
+                        padding: EdgeInsets.only(left: 10, right: 10, top: 5),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: <Widget>[
+                            new Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green.withOpacity(0.4),
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.5),
+                                  width: 4,
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50.0)),
+                              ),
+                              child: new IconButton(
+                                icon: Icon(Icons.remove_red_eye),
+                                tooltip: 'View',
+                                splashColor: Colors.white,
+                                iconSize: 40,
+                                onPressed: () {
+                                  Navigator.push(
+                                    aa.context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            new ViewMedicine(m)),
+                                  );
+                                },
+                              ),
+                            ),
+                            new Container(
+                              margin: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: Colors.amber.withOpacity(0.4),
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.5),
+                                  width: 4,
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50.0)),
+                              ),
+                              child: new IconButton(
+                                icon: Icon(Icons.edit),
+                                tooltip: 'Edit',
+                                splashColor: Colors.white,
+                                iconSize: 40,
+                                onPressed: () {
+                                  Navigator.push(
+                                    aa.context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                            new EditMedicine(m)),
+                                  );
+                                },
+                              ),
+                            ),
+                            new Container(
+                              margin: EdgeInsets.only(left: 10),
+                              decoration: BoxDecoration(
+                                color: Colors.red.withOpacity(0.4),
+                                border: Border.all(
+                                  color: Colors.white.withOpacity(0.5),
+                                  width: 4,
+                                ),
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(50.0)),
+                              ),
+                              child: new IconButton(
+                                icon: Icon(Icons.delete),
+                                tooltip: 'Delete',
+                                splashColor: Colors.white,
+                                iconSize: 40,
+                                onPressed: () async {
+                                  showAlertDialog(aa.context, m, aa);
+                                },
+                              ),
+                            )
+                          ],
+                        )),
                   ],
                 ),
-              ),
+              ],
             ),
-            new Padding(
-              padding: EdgeInsets.only(top: 10),
-            ),
-          ],
-        )
-     );
+          ),
+        ),
+        new Padding(
+          padding: EdgeInsets.only(top: 10),
+        ),
+      ],
+    ));
   }
 
   showAlertDialog(BuildContext context2, Medicine m, _ShowLists aa) {

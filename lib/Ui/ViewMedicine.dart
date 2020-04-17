@@ -22,13 +22,12 @@ class _ViewMedicineState extends State<ViewMedicine> {
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
 
-
   _ViewMedicineState(this.m);
 
   @override
   Widget build(BuildContext context) {
-    name.text=m.name;
-    dis.text=m.details;
+    name.text = m.name;
+    dis.text = m.details;
     TextStyle textStyle = Theme.of(context).textTheme.headline5;
     return Scaffold(
       body: Center(
@@ -59,27 +58,9 @@ class _ViewMedicineState extends State<ViewMedicine> {
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
                                       'Medicine Name : ',
-                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
-                                    ),
-                                  ),
-                                  new Padding(
-                                      padding: EdgeInsets.only(top: 10)),
-                                  new Container(
-                                      child: new Align(
-                                        alignment: Alignment.center,
-                                        child: new Text(
-                                          '  '+m.name,
-                                          style: TextStyle(fontSize: 20),
-                                        ),
-                                      ),
-                                  ),
-                                  new Padding(
-                                      padding: EdgeInsets.only(top: 20)),
-                                  new Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: new Text(
-                                      'Medicine Description : ',
-                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   new Padding(
@@ -88,7 +69,29 @@ class _ViewMedicineState extends State<ViewMedicine> {
                                     child: new Align(
                                       alignment: Alignment.center,
                                       child: new Text(
-                                        '  '+m.details,
+                                        '  ' + m.name,
+                                        style: TextStyle(fontSize: 20),
+                                      ),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 20)),
+                                  new Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: new Text(
+                                      'Medicine Description : ',
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ),
+                                  new Padding(
+                                      padding: EdgeInsets.only(top: 10)),
+                                  new Container(
+                                    child: new Align(
+                                      alignment: Alignment.center,
+                                      child: new Text(
+                                        '  ' + m.details,
                                         maxLines: 10,
                                         style: TextStyle(fontSize: 20),
                                       ),
@@ -100,19 +103,26 @@ class _ViewMedicineState extends State<ViewMedicine> {
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
                                       'Image Of Medicine: ',
-                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
-                                  Image.network(m.img,width: 100,),
+                                  Image.network(
+                                    m.img,
+                                    width: 100,
+                                  ),
                                   new Padding(
                                       padding: EdgeInsets.only(top: 20)),
                                   new Align(
                                     alignment: Alignment.centerLeft,
                                     child: new Text(
                                       'Add Or Edit Date And Time : ',
-                                      style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),
+                                      style: TextStyle(
+                                          fontSize: 25,
+                                          fontWeight: FontWeight.bold),
                                     ),
                                   ),
                                   new Padding(
@@ -121,7 +131,7 @@ class _ViewMedicineState extends State<ViewMedicine> {
                                     child: new Align(
                                       alignment: Alignment.center,
                                       child: new Text(
-                                        '  '+m.date,
+                                        '  ' + m.date,
                                         maxLines: 10,
                                         style: TextStyle(fontSize: 20),
                                       ),

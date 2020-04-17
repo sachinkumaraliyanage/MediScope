@@ -6,68 +6,64 @@ import 'FirebaseData.dart';
 //sachin kumara Liyanage
 //IT17152938
 
-class FirebaseAuthPr{
-   final FirebaseAuth _auth= FirebaseAuth.instance;
+class FirebaseAuthPr {
+  final FirebaseAuth _auth = FirebaseAuth.instance;
 
-   Future<void> logout() async {
-      try{
-         await _auth.signOut();
-         FirebaseDataApi.useremail="";
-      }catch(e){
-         print(e);
+  Future<void> logout() async {
+    try {
+      await _auth.signOut();
+      FirebaseDataApi.useremail = "";
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  Future<bool> loginwithgoogle() async {
+    try {
+      GoogleSignIn googleSignIn = GoogleSignIn();
+      GoogleSignInAccount account = await googleSignIn.signIn();
+      if (account == null) {
+        return false;
       }
 
-   }
-
-   Future<bool> loginwithgoogle() async {
-      try{
-         GoogleSignIn googleSignIn=GoogleSignIn();
-         GoogleSignInAccount account= await googleSignIn.signIn();
-         if(account==null){
-            return false;
-         }
-         
-         AuthResult res=await _auth.signInWithCredential(GoogleAuthProvider.getCredential(
-             idToken: (await account.authentication).idToken,
-             accessToken: (await account.authentication).accessToken
-         ));
-         if(res.user==null){
-            return false;
-         }
-         FirebaseDataApi.useremail=res.user.email;
-         return true;
-
-      }catch(e){
-         print(e);
+      AuthResult res = await _auth.signInWithCredential(
+          GoogleAuthProvider.getCredential(
+              idToken: (await account.authentication).idToken,
+              accessToken: (await account.authentication).accessToken));
+      if (res.user == null) {
+        return false;
       }
+      FirebaseDataApi.useremail = res.user.email;
+      return true;
+    } catch (e) {
+      print(e);
+    }
+  }
 
-   }
+  Future<bool> loginwithfacebook() async {
+    try {
+      FacebookLogin facebookLogin = new FacebookLogin();
 
-   Future<bool> loginwithfacebook() async {
-      try{
-         FacebookLogin facebookLogin =new FacebookLogin();
+      var re = await facebookLogin.logIn(['email', 'public_profile']);
 
-         var re= await facebookLogin.logIn(['email','public_profile']);
+      if (re.status == FacebookLoginStatus.loggedIn) {
+        AuthResult res = await _auth.signInWithCredential(
+            FacebookAuthProvider.getCredential(
+                accessToken: re.accessToken.token));
 
-         if(re.status==FacebookLoginStatus.loggedIn){
-            AuthResult res=  await _auth.signInWithCredential(FacebookAuthProvider.getCredential(
-               accessToken: re.accessToken.token
-            ));
-
-            if(res.user==null){
-               return false;
-            }
-            FirebaseDataApi.useremail=res.user.email;
-            return true;
-
-         }else{
-            print(re.errorMessage);
-            print(re.status.toString());
-            return false;
-         }
-      }catch(e){
-         print(e);
-         return false;
+        if (res.user == null) {
+          return false;
+        }
+        FirebaseDataApi.useremail = res.user.email;
+        return true;
+      } else {
+        print(re.errorMessage);
+        print(re.status.toString());
+        return false;
       }
-   }
+    } catch (e) {
+      print(e);
+      return false;
+    }
+  }
 }

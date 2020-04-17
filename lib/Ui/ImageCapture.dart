@@ -5,19 +5,13 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'ImageUploader.dart';
 
-
 class ImageCapture extends StatefulWidget {
-
-
-
   @override
   State<StatefulWidget> createState() => ImageCaptureStatus();
 }
 
 class ImageCaptureStatus extends State<ImageCapture> {
-
   File _imageFile;
-
 
   ImageCaptureStatus();
 
@@ -82,7 +76,7 @@ class ImageCaptureStatus extends State<ImageCapture> {
             ),
           ]);
       _listWidget.add(listButton);
-      _listWidget.add(ImageUploader(file: _imageFile,imageCapture:this));
+      _listWidget.add(ImageUploader(file: _imageFile, imageCapture: this));
     }
 
     return _listWidget;
