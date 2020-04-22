@@ -12,14 +12,18 @@ import 'ImageCapture.dart';
 import '../Utill/locator.dart';
 
 class AddMedicine extends StatefulWidget {
+  //creat StatefulWidget class for AddMedicine and set state to it
   @override
   State<StatefulWidget> createState() => AddMedicineState();
 }
 
 class AddMedicineState extends State<AddMedicine> {
+
+  //create TextEditingController
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
 
+  //create GlobalKey for access in another class or state
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
 
   @override
@@ -33,7 +37,7 @@ class AddMedicineState extends State<AddMedicine> {
         child: new Container(
           child: new Stack(
             children: <Widget>[
-              new FullBackground('assets/backimg/backlogin.jpg', 3.0, 3.0, 0.4),
+              new FullBackground('assets/backimg/backlogin.jpg', 3.0, 3.0, 0.4), // set Background image
               new SingleChildScrollView(
                   child: new Container(
                       margin: EdgeInsets.fromLTRB(20, 80, 20, 80),
@@ -63,7 +67,7 @@ class AddMedicineState extends State<AddMedicine> {
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
                                   new TextField(
-                                    controller: name,
+                                    controller: name, //set TextEditingController
                                     keyboardType: TextInputType.text,
                                     maxLines: 1,
                                     decoration: InputDecoration(
@@ -98,7 +102,7 @@ class AddMedicineState extends State<AddMedicine> {
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
                                   new TextField(
-                                    controller: dis,
+                                    controller: dis, //set TextEditingController
                                     keyboardType: TextInputType.multiline,
                                     maxLines: 10,
                                     decoration: InputDecoration(
@@ -134,6 +138,7 @@ class AddMedicineState extends State<AddMedicine> {
                                       padding: EdgeInsets.only(top: 10)),
                                   new FlatButton.icon(
                                     onPressed: () {
+                                      //route to ImageCapture interface
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -170,6 +175,7 @@ class AddMedicineState extends State<AddMedicine> {
                               height: 50.0,
                               child: new OutlineButton(
                                 onPressed: () async {
+                                  // send add data to CRUDModel and redirect to main list
                                   _scaffoldkey.currentState.showSnackBar(
                                     SnackBar(
                                       content: new Text(
@@ -178,6 +184,7 @@ class AddMedicineState extends State<AddMedicine> {
                                     ),
                                   );
                                   MainContoller.i = true;
+                                  //get current datetime
                                   var now = new DateTime.now();
                                   String date =
                                       new DateFormat("yyyy-MM-dd HH:mm:ss")
@@ -231,15 +238,15 @@ class AddMedicineState extends State<AddMedicine> {
     );
   }
 
-  Future<String> _geturl(String url) async {
-//    print("object");
-//    print(await FirebaseStorage(storageBucket: firebaseImageUrl).ref().child(url).getDownloadURL(url).then((value) => value.toString()));
-    String path = await FirebaseStorage(storageBucket: firebaseImageUrl)
-        .ref()
-        .child(url)
-        .getDownloadURL()
-        .then((value) => value.toString());
-    print(path);
-    return path;
-  }
+//  Future<String> _geturl(String url) async {
+////    print("object");
+////    print(await FirebaseStorage(storageBucket: firebaseImageUrl).ref().child(url).getDownloadURL(url).then((value) => value.toString()));
+//    String path = await FirebaseStorage(storageBucket: firebaseImageUrl)
+//        .ref()
+//        .child(url)
+//        .getDownloadURL()
+//        .then((value) => value.toString());
+//    print(path);
+//    return path;
+//  }
 }
