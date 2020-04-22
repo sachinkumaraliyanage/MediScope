@@ -9,9 +9,11 @@ import '../Utill/locator.dart';
 import 'ImageCapture.dart';
 
 class ImageUploader extends StatefulWidget {
+  //creat StatefulWidget class for ImageUploader and set state to it
   final File file;
   ImageCaptureStatus imageCapture;
 
+  //constructor with image file and ImageCaptureStatus object
   ImageUploader({Key key, this.file, this.imageCapture}) : super(key: key);
 
   @override
@@ -21,13 +23,15 @@ class ImageUploader extends StatefulWidget {
 class _ImageUploaderStatus extends State<ImageUploader> {
   String filePath;
   ImageCaptureStatus imageCapture;
-
+  //constructor with parameters
   _ImageUploaderStatus(this.imageCapture);
+
 
   final FirebaseStorage _storage =
       FirebaseStorage(storageBucket: firebaseImageUrl);
   StorageUploadTask _uploadTask;
 
+  // start image upload to Firebase Storage
   void _startUpload() {
     filePath = firebaseImageMainFolder + '${DateTime.now()}.jpg';
     setState(() {
@@ -39,6 +43,7 @@ class _ImageUploaderStatus extends State<ImageUploader> {
     });
   }
 
+  //get uploaded image real path for show
   void getImgpath(String path) async {
     path = await FirebaseStorage(storageBucket: firebaseImageUrl)
         .ref()
@@ -86,6 +91,7 @@ class _ImageUploaderStatus extends State<ImageUploader> {
     }
   }
 
+  //generate view
   List<Widget> createcoulam(StorageUploadTask u, double progressPercent) {
     List<Widget> l = new List();
     print(u.onComplete);
