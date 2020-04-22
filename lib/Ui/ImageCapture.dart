@@ -63,6 +63,7 @@ class ImageCaptureStatus extends State<ImageCapture> {
     );
   }
 
+  //generate image upload interface
   List<Widget> getWidget() {
     List<Widget> _listWidget = new List();
     if (_imageFile != null) {
