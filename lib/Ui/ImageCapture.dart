@@ -6,15 +6,18 @@ import 'package:image_picker/image_picker.dart';
 import 'ImageUploader.dart';
 
 class ImageCapture extends StatefulWidget {
+  //creat StatefulWidget class for ImageCapture and set state to it
   @override
   State<StatefulWidget> createState() => ImageCaptureStatus();
 }
 
 class ImageCaptureStatus extends State<ImageCapture> {
-  File _imageFile;
+  File _imageFile;//store selected or captured image file
 
+  //constructor
   ImageCaptureStatus();
 
+  //pick image from local gallery or camera
   Future<void> _pickImage(ImageSource source) async {
     File selected = await ImagePicker.pickImage(source: source);
 
@@ -23,6 +26,7 @@ class ImageCaptureStatus extends State<ImageCapture> {
     });
   }
 
+  //sending selected image to edit
   Future<void> _cropImage() async {
     File _cropped = await ImageCropper.cropImage(
       sourcePath: _imageFile.path,
