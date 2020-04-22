@@ -10,28 +10,36 @@ import 'ShowList.dart';
 import 'ImageCapture.dart';
 
 class EditMedicine extends StatefulWidget {
-  Medicine m;
+  Medicine m; //store current values
 
+  //constructor with parameters for set Medicine current value to object
   EditMedicine(this.m) {
     Medicine.imgurl = m.img;
   }
 
+  //creat StatefulWidget class for EditMedicine and set state to it
   @override
   State<StatefulWidget> createState() => _EditMedicineState(m);
 }
 
 class _EditMedicineState extends State<EditMedicine> {
-  Medicine m;
+  Medicine m; //store current values
 
+  //create TextEditingController
   TextEditingController name = TextEditingController();
   TextEditingController dis = TextEditingController();
+
+  //create GlobalKey for access in another class or state
   final GlobalKey<ScaffoldState> _scaffoldkey = new GlobalKey<ScaffoldState>();
 
+  //constructor with parameters for set Medicine current value to object
   _EditMedicineState(this.m);
 
   @override
   Widget build(BuildContext context) {
+    //set current values
     Medicine.s = this;
+    //set value to TextField
     name.text = m.name;
     dis.text = m.details;
 
@@ -42,7 +50,7 @@ class _EditMedicineState extends State<EditMedicine> {
         child: new Container(
           child: new Stack(
             children: <Widget>[
-              new FullBackground('assets/backimg/backlogin.jpg', 3.0, 3.0, 0.4),
+              new FullBackground('assets/backimg/backlogin.jpg', 3.0, 3.0, 0.4),// set Background image
               new SingleChildScrollView(
                   child: new Container(
                       margin: EdgeInsets.fromLTRB(20, 80, 20, 80),
@@ -72,7 +80,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
                                   new TextField(
-                                    controller: name,
+                                    controller: name,//set TextEditingController
                                     keyboardType: TextInputType.text,
                                     maxLines: 1,
                                     decoration: InputDecoration(
@@ -107,7 +115,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                   new Padding(
                                       padding: EdgeInsets.only(top: 10)),
                                   new TextField(
-                                    controller: dis,
+                                    controller: dis,//set TextEditingController
                                     keyboardType: TextInputType.text,
                                     maxLines: 10,
                                     decoration: InputDecoration(
@@ -143,6 +151,7 @@ class _EditMedicineState extends State<EditMedicine> {
                                       padding: EdgeInsets.only(top: 10)),
                                   new FlatButton.icon(
                                     onPressed: () {
+                                      //route to ImageCapture interface
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
@@ -179,6 +188,7 @@ class _EditMedicineState extends State<EditMedicine> {
                               height: 50.0,
                               child: new OutlineButton(
                                 onPressed: () async {
+                                  // send add data to CRUDModel and redirect to main list
                                   _scaffoldkey.currentState.showSnackBar(
                                     SnackBar(
                                       content: new Text(
