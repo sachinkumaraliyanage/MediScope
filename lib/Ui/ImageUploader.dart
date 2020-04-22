@@ -91,7 +91,7 @@ class _ImageUploaderStatus extends State<ImageUploader> {
     }
   }
 
-  //generate view
+  //generate ImageUploader  view column
   List<Widget> createcoulam(StorageUploadTask u, double progressPercent) {
     List<Widget> l = new List();
     print(u.onComplete);
