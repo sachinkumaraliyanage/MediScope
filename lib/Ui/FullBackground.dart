@@ -5,11 +5,13 @@ import 'package:flutter/material.dart';
 //IT17152938
 
 class FullBackground extends StatelessWidget {
-  String _path = "";
-  double _x = 0.0;
-  double _y = 0.0;
-  double _opacity = 0.0;
+  // add background image for any class
+  String _path = "";//image path
+  double _x = 0.0;// sigma x for image blur
+  double _y = 0.0;//sigma y for image blur
+  double _opacity = 0.0;//opacity level for  image over layer Box Decoration
 
+  //constructor with parameters
   FullBackground(this._path, this._x, this._y, this._opacity); //
 
   @override
