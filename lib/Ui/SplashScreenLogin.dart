@@ -11,6 +11,7 @@ class SplashScreenLogin extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreenLogin> {
+  //redirect interface after 2 sec
   @override
   void initState() {
     super.initState();
