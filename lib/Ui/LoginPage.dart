@@ -7,7 +7,7 @@ import '../main.dart';
 //sachin kumara Liyanage
 //IT17152938
 class LoginPage extends StatelessWidget {
-  final double _opacity = 0.7;
+  final double _opacity = 0.7;//set button opacity
 
   @override
   Widget build(BuildContext context) {
