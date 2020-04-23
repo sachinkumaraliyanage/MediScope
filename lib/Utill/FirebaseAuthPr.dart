@@ -9,6 +9,7 @@ import 'FirebaseData.dart';
 class FirebaseAuthPr {
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
+  //log out from app
   Future<void> logout() async {
     try {
       await _auth.signOut();
@@ -18,6 +19,7 @@ class FirebaseAuthPr {
     }
   }
 
+  //login using google auth
   Future<bool> loginwithgoogle() async {
     try {
       GoogleSignIn googleSignIn = GoogleSignIn();
@@ -40,6 +42,7 @@ class FirebaseAuthPr {
     }
   }
 
+  //login using facebook auth
   Future<bool> loginwithfacebook() async {
     try {
       FacebookLogin facebookLogin = new FacebookLogin();
