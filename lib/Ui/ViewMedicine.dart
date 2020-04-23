@@ -11,8 +11,9 @@ import 'ShowList.dart';
 class ViewMedicine extends StatefulWidget {
   Medicine m;
 
+  //constructor with parameters for set Medicine current value to object
   ViewMedicine(this.m);
-
+  //creat StatefulWidget class for ViewMedicine and set state to it
   @override
   State<StatefulWidget> createState() => _ViewMedicineState(m);
 }
