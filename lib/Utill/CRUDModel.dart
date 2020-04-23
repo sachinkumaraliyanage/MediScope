@@ -11,6 +11,7 @@ class CRUDModel extends ChangeNotifier {
 
   List<Medicine> products;
 
+  //fetch all Medicines from Firebase
   Future<List<Medicine>> fetchMedicines() async {
     var result = await _api.getDataCollection();
     products = result.documents
@@ -19,28 +20,32 @@ class CRUDModel extends ChangeNotifier {
     return products;
   }
 
+  //fetch all Medicines from Firebase as Stream
   Stream<QuerySnapshot> fetchMedicinesAsStream() {
     return _api.streamDataCollection();
   }
 
+  //get Medicines by ID
   Future<Medicine> getMedicineById(String id) async {
     var doc = await _api.getDocumentById(id);
     return Medicine.fromMap(doc.data, doc.documentID);
   }
 
+  //remove Medicines
   Future removeMedicine(String id) async {
     await _api.removeDocument(id);
     return;
   }
 
+  //edit Medicines
   Future updateMedicine(Medicine data, String id) async {
     await _api.updateDocument(data.toJson(), id);
     return;
   }
 
+  //add Medicines
   Future addMedicine(Medicine data) async {
     var result = await _api.addDocument(data.toJson());
-
     return;
   }
 }
