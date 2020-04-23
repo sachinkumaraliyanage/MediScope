@@ -13,6 +13,7 @@ import 'LoginPage.dart';
 //sachin kumara Liyanage
 //IT17152938
 class ShowList extends StatefulWidget {
+  //creat StatefulWidget class for ShowList and set state to it
   @override
   State<StatefulWidget> createState() => _ShowLists();
 }
@@ -21,6 +22,7 @@ class _ShowLists extends State<ShowList> {
   String search = '';
   List<Widget> list = new List<Widget>();
 
+  //get data from firebase and analyze and show list create
   void setlist() async {
     await new CRUDModel().fetchMedicines().then((value) {
       print("sachin ");
@@ -173,10 +175,13 @@ class _ShowLists extends State<ShowList> {
   }
 }
 
+//generate single object for the interface
 class _MedicineContainerCreator {
+
   Medicine m;
   _ShowLists aa;
 
+  //constructor with parameters
   _MedicineContainerCreator(this.m, this.aa);
 
   Widget build(BuildContext context) {
