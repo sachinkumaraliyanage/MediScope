@@ -9,8 +9,6 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 
-//sachin kumara Liyanage
-//IT17152938
 
 class FullBackground extends StatelessWidget {
   // add background image for any class
