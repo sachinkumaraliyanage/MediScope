@@ -1,6 +1,20 @@
-//sachin kumara Liyanage
-//IT17152938
+/*
+* File Name: Medicine.dart
+* Author: S.K.Liyanage
+* Reg No: IT17152938
+* Date: 2020/03/11
+* Description: Contains model implementation of all the medicines functions.
+* Reference: ProductAppCourse, July. 29, 2019. Accessed on: March. 10, 2020.[online]. https://github.com/mohamedHassanKa/ProductAppCourse
+*
+* */
+
 import 'package:flutter/material.dart';
+
+/*
+* Reference: ProductAppCourse, July. 29, 2019. Accessed on: March. 10, 2020.[online]. https://github.com/mohamedHassanKa/ProductAppCourse
+*
+* Some of the code snippets of the above github code were adjusted and used for below class.
+**/
 
 class Medicine {
   static State<StatefulWidget> s;

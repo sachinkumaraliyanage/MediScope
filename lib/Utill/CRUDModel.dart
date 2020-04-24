@@ -1,11 +1,24 @@
+/*
+* File Name: CRUDModel.dart
+* Author: S.K.Liyanage
+* Reg No: IT17152938
+* Date: 2020/03/11
+* Description: Contains model implementation of all the crud functions.
+* Reference: ProductAppCourse, July. 29, 2019. Accessed on: March. 10, 2020.[online]. https://github.com/mohamedHassanKa/ProductAppCourse
+*
+* */
+
 import 'Medicine.dart';
 import 'package:flutter/material.dart';
 import 'FirebaseData.dart';
 import 'locator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
-//sachin kumara Liyanage
-//IT17152938
+/*
+* Reference: ProductAppCourse, July. 29, 2019. Accessed on: March. 10, 2020.[online]. https://github.com/mohamedHassanKa/ProductAppCourse
+*
+* Some of the code snippets of the above github code were adjusted and used for below class.
+**/
 class CRUDModel extends ChangeNotifier {
   FirebaseDataApi _api = locator<FirebaseDataApi>();
 

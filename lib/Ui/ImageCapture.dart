@@ -16,8 +16,10 @@ import 'package:image_picker/image_picker.dart';
 import 'ImageUploader.dart';
 
 /*
-*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+* Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
 *           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+*
+* Some of the code snippets of the above tutorial were adjusted and used for below function.
 **/
 
 class ImageCapture extends StatefulWidget {
@@ -27,8 +29,10 @@ class ImageCapture extends StatefulWidget {
 }
 
 /*
-*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+* Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
 *           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+*
+* Some of the code snippets of the above tutorial were adjusted and used for below function.
 **/
 
 class ImageCaptureStatus extends State<ImageCapture> {
@@ -47,8 +51,10 @@ class ImageCaptureStatus extends State<ImageCapture> {
   }
 
 /*
-*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+* Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
 *           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+*
+* Some of the code snippets of the above tutorial were adjusted and used for below function.
 **/
 
   //sending selected image to edit
