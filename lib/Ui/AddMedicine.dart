@@ -1,3 +1,12 @@
+/*
+* File Name: AddMedicine.dart
+* Author: S.K.Liyanage
+* Reg No: IT17152938
+* Date: 2020/03/10
+* Description: Contains interface design for medicine add function.
+*
+* */
+
 import 'package:MediScope/Utill/FirebaseData.dart';
 import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/cupertino.dart';

@@ -1,3 +1,11 @@
+/*
+* File Name: FullBackground.dart
+* Author: S.K.Liyanage
+* Reg No: IT17152938
+* Date: 2020/03/10
+* Description: Implemented background design for interfaces.
+* */
+
 import 'dart:ui';
 import 'package:flutter/material.dart';
 

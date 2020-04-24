@@ -1,3 +1,11 @@
+/*
+* File Name: ShowList.dart
+* Author: S.K.Liyanage
+* Reg No: IT17152938
+* Date: 2020/03/10
+* Description: Design and implementation of medicine list interface. This interface is used to show the list of medicine to the user.
+* */
+
 import 'package:MediScope/Utill/FirebaseData.dart';
 import 'package:flutter/material.dart';
 import '../Utill/Medicine.dart';
