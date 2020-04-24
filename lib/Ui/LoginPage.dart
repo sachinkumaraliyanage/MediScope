@@ -1,11 +1,17 @@
+/*
+* File Name: LoginPage.dart
+* Author: P.M.C.P.Paththinisekara
+* Reg No: IT17056212
+* Date: 2020/03/20
+* Description: Contains interface design for the login functionality.
+* */
+
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
 import '../Utill/FirebaseAuthPr.dart';
 import 'ShowList.dart';
 import '../main.dart';
 
-//sachin kumara Liyanage
-//IT17152938
 class LoginPage extends StatelessWidget {
   final double _opacity = 0.7;//set button opacity
 

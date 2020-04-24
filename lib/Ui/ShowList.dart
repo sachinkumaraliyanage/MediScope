@@ -18,8 +18,6 @@ import 'ViewMedicine.dart';
 import 'EditMedicine.dart';
 import 'LoginPage.dart';
 
-//sachin kumara Liyanage
-//IT17152938
 class ShowList extends StatefulWidget {
   //creat StatefulWidget class for ShowList and set state to it
   @override

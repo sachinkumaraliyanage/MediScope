@@ -1,3 +1,13 @@
+/*
+* File Name: ImageUploader.dart
+* Author: P.M.C.P.Paththinisekara
+* Reg No: IT17056212
+* Date: 2020/03/20
+* Description: Contains interface design and image upload functionalities to firebase.
+* Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*            [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+* */
+
 import 'dart:io';
 
 import '../Ui/AddMedicine.dart';
@@ -7,6 +17,11 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import '../Utill/locator.dart';
 import 'ImageCapture.dart';
+
+/*
+*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+**/
 
 class ImageUploader extends StatefulWidget {
   //creat StatefulWidget class for ImageUploader and set state to it
@@ -19,6 +34,11 @@ class ImageUploader extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => _ImageUploaderStatus(imageCapture);
 }
+
+/*
+*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+**/
 
 class _ImageUploaderStatus extends State<ImageUploader> {
   String filePath;

@@ -1,11 +1,19 @@
+/*
+* File Name: SplashScreenHome.dart
+* Author: P.M.C.P.Paththinisekara
+* Reg No: IT17056212
+* Date: 2020/03/20
+* Description: Contains interface design for the splash screen which will redirect the user to home page if he is already logged in.
+* */
+
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
 
 import 'ShowList.dart';
 
-//sachin kumara Liyanage
-//IT17152938
+
 class SplashScreenHome extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _SplashScreenState();

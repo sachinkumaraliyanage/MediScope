@@ -1,10 +1,18 @@
+/*
+* File Name: SplashScreenLogin.dart
+* Author: P.M.C.P.Paththinisekara
+* Reg No: IT17056212
+* Date: 2020/03/20
+* Description: Contains interface design for the splash screen which will redirect the user to login page if he is not logged in.
+* */
+
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'FullBackground.dart';
 import 'LoginPage.dart';
 
-//sachin kumara Liyanage
-//IT17152938
+
 class SplashScreenLogin extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _SplashScreenState();

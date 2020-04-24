@@ -1,3 +1,13 @@
+/*
+* File Name: ImageCapture.dart
+* Author: P.M.C.P.Paththinisekara
+* Reg No: IT17056212
+* Date: 2020/03/20
+* Description: Contains interface design and ImageCapture functionalities using image_cropper & image_picker libraries.
+* Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*            [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+* */
+
 import 'dart:io';
 
 import 'package:flutter/material.dart';
@@ -5,11 +15,21 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:image_picker/image_picker.dart';
 import 'ImageUploader.dart';
 
+/*
+*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+**/
+
 class ImageCapture extends StatefulWidget {
   //creat StatefulWidget class for ImageCapture and set state to it
   @override
   State<StatefulWidget> createState() => ImageCaptureStatus();
 }
+
+/*
+*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+**/
 
 class ImageCaptureStatus extends State<ImageCapture> {
   File _imageFile;//store selected or captured image file
@@ -25,6 +45,11 @@ class ImageCaptureStatus extends State<ImageCapture> {
       _imageFile = selected;
     });
   }
+
+/*
+*Reference: Flutter File Upload - Pick, Crop, and Save Images to the Cloud, July. 29, 2019. Accessed on: March. 16, 2020.
+*           [Video file]. Available: https://www.youtube.com/watch?v=HCmAwk2fnZc&t=149s
+**/
 
   //sending selected image to edit
   Future<void> _cropImage() async {
