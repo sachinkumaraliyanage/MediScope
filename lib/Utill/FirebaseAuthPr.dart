@@ -1,10 +1,17 @@
+/*
+* File Name: FirebaseAuthPr.dart
+* Author: P.M.C.P.Paththinisekara
+* Reg No: IT17056212
+* Date: 2020/03/20
+* Description: Contains implementation of Firebase authentication using flutter_facebook_login and google_sign_in libraries.
+* */
+
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'FirebaseData.dart';
 
-//sachin kumara Liyanage
-//IT17152938
 
 class FirebaseAuthPr {
   final FirebaseAuth _auth = FirebaseAuth.instance;
